@@ -26,12 +26,18 @@ public class WeaponSelection : MonoBehaviour
 		m_playerInputs.Movement.FirstWeapon.started += context => SelectWeapon(0);
 		m_playerInputs.Movement.SecondWeapon.started += context => SelectWeapon(1);
         m_playerInputs.Movement.Attack.started += UseWeapon;
+        m_playerInputs.Movement.Attack.canceled += DisableWeapon;
         SelectWeapon(0);
 	}
 
     private void UseWeapon(InputAction.CallbackContext context)
     {
 		m_selectedWeapon.Attack();
+    }
+
+	private void DisableWeapon(InputAction.CallbackContext context)
+	{
+		m_selectedWeapon.StopAttack();
     }
 
     private void Update()
@@ -76,6 +82,7 @@ public class WeaponSelection : MonoBehaviour
 		}
 		m_weapons[index].gameObject.SetActive(true);
 		m_selectedWeapon = m_weapons[index];
+		m_selectedWeapon.gameObject.transform.position = transform.position;
 	}
 
 	public void DisableSelectingWeapon()

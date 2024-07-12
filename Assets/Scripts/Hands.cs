@@ -5,17 +5,11 @@ using UnityEngine;
 public class Hands : Weapon
 {
     Enemy m_catchedEnemy;
-    [SerializeField] private Transform m_enemyPosition;
     [SerializeField] private GameObject m_enemyHolder;
-    [SerializeField] private GameObject m_weaponSelector;
 
-    private SpriteRenderer m_spriteRenderer;
-    private bool m_isActive = true;
-
-    private void Start()
+    public override void Start()
     {
-        m_spriteRenderer = GetComponent<SpriteRenderer>();
-        m_animator = GetComponent<Animator>();
+        base.Start();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +31,7 @@ public class Hands : Weapon
     {
         if (m_catchedEnemy == null) return;
         m_enemyHolder.SetActive(true);
-        m_catchedEnemy.GetComponent<Transform>().position = m_enemyPosition.position;
+        m_catchedEnemy.GetComponent<Transform>().position = m_enemyTransform.position;
         DisableWeapon();
     }
 
@@ -57,6 +51,14 @@ public class Hands : Weapon
 
     public override void Attack()
     {
-        m_animator.SetTrigger("Attack");
+        if (!m_isActive) return;
+        m_animator.SetBool("Attack", true);
+        m_collider.enabled = true;
+    }
+
+    public override void StopAttack()
+    {
+        m_animator.SetBool("Attack", false);
+        m_collider.enabled = false;
     }
 }

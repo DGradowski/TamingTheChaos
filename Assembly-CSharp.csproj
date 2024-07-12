@@ -61,8 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\HandAnimation.cs" />
+    <Compile Include="Assets\Scripts\Fork.cs" />
     <Compile Include="Assets\Scripts\PlayerCollision.cs" />
-    <Compile Include="Assets\Fork.cs" />
+    <Compile Include="Assets\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerInputs.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
