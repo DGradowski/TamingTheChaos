@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Game Objects")]
 	[SerializeField] private Animator m_animator;
+	[SerializeField] private GameObject m_sprite;
 
 	bool m_inHitMotion;
     float m_hitTimer;
@@ -79,11 +80,15 @@ public class PlayerMovement : MonoBehaviour
 		m_inHitMotion = true;
 		m_moveVector = moveVector;
         m_hitTimer = hitTime;
+		m_animator.SetBool("HitMotion", true);
+		m_animator.SetFloat("xVector", moveVector.x);
     }
 
 	public void StopHitMotion()
 	{
         m_inHitMotion = false;
         m_moveVector = m_playerInputs.Movement.Move.ReadValue<Vector2>();
+		m_animator.SetBool("HitMotion", false);
+        if (m_moveVector == Vector2.zero) m_animator.SetBool("Walking", false);
     }
 }

@@ -8,7 +8,6 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
         if (collision.tag == "Enemy")
         {
             Vector2 vector = (transform.position - collision.transform.position);
