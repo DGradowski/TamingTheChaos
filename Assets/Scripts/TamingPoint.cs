@@ -10,7 +10,7 @@ public class TamingPoint : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Sprite[] m_eyeFrames;
     public void OnPointerClick(PointerEventData eventData)
     {
-        m_area.ShowNewEye();
+        m_area.ShowNewEye(false);
     }
 
     // Start is called before the first frame update

@@ -4,10 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static UnityEngine.EventSystems.EventTrigger;
+using TMPro;
 
 public class TamingArea : MonoBehaviour
 {
 	[SerializeField] private Hands m_hands;
+	[SerializeField] private TMPro.TextMeshProUGUI m_clickText;
+	[SerializeField] private GameObject m_goodPopParticle;
 	private RectTransform m_rectTransform;
 	private bool m_active;
 	private float m_timer;
@@ -44,18 +47,20 @@ public class TamingArea : MonoBehaviour
 		m_eyesToClick = min_eyes;
 		m_extraEyes = extra;
 		m_tamingTime = taming_time;
-		ShowNewEye();
+		ShowNewEye(true);
 		
 	}
 
-	public void ShowNewEye()
+	public void ShowNewEye(bool first)
 	{
 		m_active = true;
 		m_eye.GetComponent<TamingPoint>().ChangeStage(0);
+		if (!first) Instantiate(m_goodPopParticle, Camera.main.ScreenToWorldPoint(m_eye.transform.position), m_eye.transform.rotation);
 		GenerateNewPosition();
         m_timer = 0;
 		m_currentStage = 0;
 		m_clickedEyes++;
+		m_clickText.text = m_clickedEyes.ToString();
         if (m_clickedEyes > m_eyesToClick + m_extraEyes)
         {
             StopTaming();
