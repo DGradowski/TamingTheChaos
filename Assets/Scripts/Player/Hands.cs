@@ -6,6 +6,7 @@ public class Hands : Weapon
 {
     Enemy m_catchedEnemy;
     [SerializeField] private GameObject m_enemyHolder;
+    [SerializeField] private TamingArea m_tamingArea;
 
     public override void Start()
     {
@@ -19,6 +20,8 @@ public class Hands : Weapon
         m_catchedEnemy = collision.GetComponent<Enemy>();
         m_catchedEnemy.GetComponent<BoxCollider2D>().enabled = false;
         m_catchedEnemy.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
+        m_tamingArea.gameObject.SetActive(true);
+        m_tamingArea.StartTaming(5, 3, 2);
     }
 
     // Update is called once per frame
@@ -33,6 +36,15 @@ public class Hands : Weapon
         m_enemyHolder.SetActive(true);
         m_catchedEnemy.GetComponent<Transform>().position = m_enemyTransform.position;
         DisableWeapon();
+    }
+
+    public void ReleaseEnemy()
+    {
+        if (m_catchedEnemy == null) return;
+        Destroy(m_catchedEnemy.gameObject);
+        m_catchedEnemy = null;
+        m_enemyHolder.SetActive(false);
+        EnableWeapon();
     }
 
     public void DisableWeapon()

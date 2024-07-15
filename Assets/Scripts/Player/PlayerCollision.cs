@@ -6,9 +6,9 @@ public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] PlayerMovement m_playerMovement;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.collider.tag == "Enemy")
         {
             Vector2 vector = (transform.position - collision.transform.position);
             m_playerMovement.StartHitMotion(vector.normalized);

@@ -11,6 +11,7 @@ public class Fork : Weapon
 
     [SerializeField] private List<Enemy> m_enemiesInRange;
     [SerializeField] private List<Enemy> m_attackedEnemies;
+    [SerializeField] private List<Enemy> m_enemiesToDestroy;
 
     // Start is called before the first frame update
     public override void Start()
@@ -37,9 +38,15 @@ public class Fork : Weapon
             {
                 Vector2 vector = (enemy.transform.position - transform.position);
                 enemy.GetHit(m_damage, vector.normalized);
-                m_attackedEnemies.Add(enemy);
+                if (enemy.GetHP() == 0) 
+                {
+                    m_enemiesToDestroy.Add(enemy);
+                }
+                else m_attackedEnemies.Add(enemy);
             }
         }
+
+        DestroyEnemies();
 
         m_timer += Time.deltaTime;
         if (m_timer >= m_animationTime)
@@ -75,5 +82,17 @@ public class Fork : Weapon
     {
         if (collision.tag != "Enemy") return;
         m_enemiesInRange.Remove(collision.GetComponent<Enemy>());
+    }
+
+    private void DestroyEnemies()
+    {
+        for (int i = 0; i < m_enemiesToDestroy.Count;)
+        {
+            Enemy enemy = m_enemiesToDestroy[i];
+            m_attackedEnemies.Remove(enemy);
+            m_enemiesInRange.Remove(enemy);
+            m_enemiesToDestroy.Remove(enemy);
+            Destroy(enemy.gameObject);
+        }
     }
 }
