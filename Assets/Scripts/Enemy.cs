@@ -8,7 +8,10 @@ public enum SinType
 	Pride,
 	Lust,
 	Anger,
-	Greed
+	Greed,
+	Envy,
+	Sloth,
+	None
 }
 
 public class Enemy : MonoBehaviour
@@ -34,6 +37,12 @@ public class Enemy : MonoBehaviour
 	[Header("Sprites")]
 	private SinType m_type;
 	[SerializeField] private Sprite[] m_sprites;
+
+	[Header("Audio")]
+	[SerializeField] private AudioClip[] m_damageClips;
+
+	[Header("Other")]
+	[SerializeField] public GameObject m_coinPrefab;
 
 	// Start is called before the first frame update
 	void Start()
@@ -87,8 +96,11 @@ public class Enemy : MonoBehaviour
 
 	public int GetHP() { return m_currentHP; }
 
+	public SinType GetSinType() { return m_type; }
+
 	public void GetHit(int damage, Vector2 moveVector)
 	{
+		SoundFXManager.instance.PlayRandomSoundFXClip(m_damageClips, transform, 1f);
 		StartHitMotion(moveVector);
 		m_currentHP -= damage;
 		m_healthSprite.UpdateHealth(m_currentHP - 1);
@@ -112,6 +124,7 @@ public class Enemy : MonoBehaviour
 
 	public void SetSinType(SinType type)
 	{
+		m_type = type;
 		GetComponent<SpriteRenderer>().sprite = m_sprites[(int)type];
 	}
 

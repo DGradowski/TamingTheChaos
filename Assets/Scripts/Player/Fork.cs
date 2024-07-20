@@ -92,6 +92,7 @@ public class Fork : Weapon
             m_attackedEnemies.Remove(enemy);
             m_enemiesInRange.Remove(enemy);
             m_enemiesToDestroy.Remove(enemy);
+            Instantiate(enemy.m_coinPrefab, enemy.transform.position, Quaternion.identity);
             Destroy(enemy.gameObject);
         }
     }

@@ -8,6 +8,9 @@ public class Hands : Weapon
     [SerializeField] private GameObject m_enemyHolder;
     [SerializeField] private TamingArea m_tamingArea;
 
+    [SerializeField] private float m_baseTamingTime;
+    [SerializeField] private int m_combo = 0;
+
     public override void Start()
     {
         base.Start();
@@ -21,7 +24,7 @@ public class Hands : Weapon
         m_catchedEnemy.GetComponent<BoxCollider2D>().enabled = false;
         m_catchedEnemy.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
         m_tamingArea.gameObject.SetActive(true);
-        m_tamingArea.StartTaming(5, 3, 2);
+        m_tamingArea.StartTaming(5, m_combo, m_baseTamingTime / m_catchedEnemy.GetHP());
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class Hands : Weapon
         if (m_catchedEnemy == null) return;
         m_enemyHolder.SetActive(true);
         m_catchedEnemy.GetComponent<Transform>().position = m_enemyTransform.position;
+        m_catchedEnemy.GetComponent<SpriteRenderer>().sortingOrder = 15;
         DisableWeapon();
     }
 
@@ -72,5 +76,17 @@ public class Hands : Weapon
     {
         m_animator.SetBool("Attack", false);
         m_collider.enabled = false;
+    }
+
+    public SinType GetChatchedEnemyType()
+    {
+        if (m_catchedEnemy == null) return SinType.None;
+        else return m_catchedEnemy.GetSinType();
+    }
+
+    public int GetChatchedEnemyHP()
+    {
+        if (m_catchedEnemy == null) return 0;
+        else return m_catchedEnemy.GetHP();
     }
 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: VCR_OSD_MONO_1
+  m_Name: Dark
   m_EditorClassIdentifier: 
-  hashCode: -597227310
+  hashCode: 2409596
   material: {fileID: 4304454952447504750}
-  materialHashCode: -1457091406
+  materialHashCode: -1422301092
   m_Version: 1.1.0
   m_SourceFontFileGUID: d4ed2d372aa6c7c43849d61ed2de2955
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: d4ed2d372aa6c7c43849d61ed2de2955, type: 3}
@@ -2628,7 +2628,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.1
+    - _OutlineWidth: 0.3
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333

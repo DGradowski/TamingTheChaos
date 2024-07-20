@@ -71,6 +71,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""4db5ea44-3567-4fe6-bb93-e07c5b61dc20"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""SecondWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6dbe4685-8e57-409c-bc2e-39ec94edd2cb"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -202,6 +222,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Movement_Run = m_Movement.FindAction("Run", throwIfNotFound: true);
         m_Movement_FirstWeapon = m_Movement.FindAction("FirstWeapon", throwIfNotFound: true);
         m_Movement_SecondWeapon = m_Movement.FindAction("SecondWeapon", throwIfNotFound: true);
+        m_Movement_Menu = m_Movement.FindAction("Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -268,6 +289,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Run;
     private readonly InputAction m_Movement_FirstWeapon;
     private readonly InputAction m_Movement_SecondWeapon;
+    private readonly InputAction m_Movement_Menu;
     public struct MovementActions
     {
         private @PlayerInputs m_Wrapper;
@@ -277,6 +299,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Run => m_Wrapper.m_Movement_Run;
         public InputAction @FirstWeapon => m_Wrapper.m_Movement_FirstWeapon;
         public InputAction @SecondWeapon => m_Wrapper.m_Movement_SecondWeapon;
+        public InputAction @Menu => m_Wrapper.m_Movement_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -301,6 +324,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @SecondWeapon.started += instance.OnSecondWeapon;
             @SecondWeapon.performed += instance.OnSecondWeapon;
             @SecondWeapon.canceled += instance.OnSecondWeapon;
+            @Menu.started += instance.OnMenu;
+            @Menu.performed += instance.OnMenu;
+            @Menu.canceled += instance.OnMenu;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -320,6 +346,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @SecondWeapon.started -= instance.OnSecondWeapon;
             @SecondWeapon.performed -= instance.OnSecondWeapon;
             @SecondWeapon.canceled -= instance.OnSecondWeapon;
+            @Menu.started -= instance.OnMenu;
+            @Menu.performed -= instance.OnMenu;
+            @Menu.canceled -= instance.OnMenu;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -353,5 +382,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnFirstWeapon(InputAction.CallbackContext context);
         void OnSecondWeapon(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
 }
