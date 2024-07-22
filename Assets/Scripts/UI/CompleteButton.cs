@@ -7,6 +7,7 @@ public class CompleteButton : MonoBehaviour
 {
 	[SerializeField] private TMPro.TextMeshProUGUI completeText;
 	[SerializeField] private TMPro.TextMeshProUGUI completeShadow;
+	[SerializeField] private string buttonText;
 	private Animator completeTextAnimator;
 
     private Button m_completeButton;
@@ -21,8 +22,8 @@ public class CompleteButton : MonoBehaviour
 	public void Enable()
 	{
 		m_completeButton.interactable = true;
-		completeText.text = "COMPLETE";
-		completeShadow.text = "COMPLETE";
+		completeText.text = buttonText;
+		completeShadow.text = buttonText;
 	}
 
     [ContextMenu("Disable")]

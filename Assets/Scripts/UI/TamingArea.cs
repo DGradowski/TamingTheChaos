@@ -13,7 +13,6 @@ public class TamingArea : MonoBehaviour
 	[SerializeField] private ProgressImage[] m_progressImages;
 	[SerializeField] private GameObject m_goodPopParticle;
 	private RectTransform m_rectTransform;
-	private bool m_active;
 	private float m_timer;
 	[SerializeField] private float m_tamingTime;
 	[SerializeField] private int m_stages;
@@ -67,7 +66,6 @@ public class TamingArea : MonoBehaviour
 
 	public void ShowNewEye(bool first)
 	{
-		m_active = true;
 		m_eye.GetComponent<TamingPoint>().ChangeStage(0);
 		if (!first) Instantiate(m_goodPopParticle, Camera.main.ScreenToWorldPoint(m_eye.transform.position), m_eye.transform.rotation);
 		GenerateNewPosition();
@@ -76,8 +74,9 @@ public class TamingArea : MonoBehaviour
 		m_clickedEyes++;
 		CheckSuccessed(m_clickedEyes - 1);
 		m_comboText.UpdateText(m_clickedEyes - m_eyesToClick);
-		SoundFXManager.instance.PlayRandomSoundFXClip(m_tamingClips, transform, 1f);
-        if (m_clickedEyes >= m_eyesToClick + m_extraEyes)
+		if (m_clickedEyes <= m_eyesToClick) SoundFXManager.instance.PlaySoundFXClip(m_tamingClips[0], transform, 1f);
+		else SoundFXManager.instance.PlaySoundFXClip(m_tamingClips[1], transform, 1f);
+		if (m_clickedEyes >= m_eyesToClick + m_extraEyes)
         {
 			SuccessTaming();
         }
@@ -130,7 +129,7 @@ public class TamingArea : MonoBehaviour
 	public void SuccessTaming()
 	{
 		int combo = m_clickedEyes - m_eyesToClick + 1;
-		int basic = 1;
+		int basic = 1 + UpgradesManager.instance.basicValue;
 		int value = CalculateValue(basic, m_hands.GetChatchedEnemyHP(), combo);
 		m_inventory.ChangeSinnersNumber(m_hands.GetChatchedEnemyType(), value);
 		SoundFXManager.instance.PlayRandomSoundFXClip(m_successClips, transform, 1f);
@@ -156,7 +155,7 @@ public class TamingArea : MonoBehaviour
     public int CalculateValue(int basic, int enemyHP, int combo)
     {
         if (combo <= 0) combo = 1;
-        return (basic + enemyHP) * combo;
+        return (basic + (enemyHP * (UpgradesManager.instance.healthBonus + 1))) * combo;
     }
 
 }

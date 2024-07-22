@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
 	private bool m_menuIsActive;
+	private bool m_questPanelIsOpen = true;
+
 	[Header("GameObjects")]
 	[SerializeField] private GameObject m_menuPanel;
 	[SerializeField] private Inventory m_inventory;
@@ -26,10 +28,12 @@ public class Menu : MonoBehaviour
 	[SerializeField] TMPro.TextMeshProUGUI m_soulsText;
 
 	[Header("Quest Panel")]
+	[SerializeField] Button[] m_navigationButtons;
+	[SerializeField] GameObject m_questPanel;
 	[SerializeField] QuestManager m_questManager;
 	[SerializeField] Image m_devilImage;
 	[SerializeField] TMPro.TextMeshProUGUI m_devilName;
-    [SerializeField] TMPro.TextMeshProUGUI m_devilSobriquet;
+	[SerializeField] TMPro.TextMeshProUGUI m_devilSobriquet;
 	[SerializeField] TMPro.TextMeshProUGUI m_questText;
 	[SerializeField] GameObject m_requestCointainer;
 	[SerializeField] GameObject m_requestPrefab;
@@ -37,6 +41,17 @@ public class Menu : MonoBehaviour
 	[SerializeField] GameObject m_rewardContainer;
 	[SerializeField] CompleteButton m_completeButton;
 	[SerializeField] GameObject m_completedText;
+
+	[Header("Shop panel")]
+	[SerializeField] GameObject m_shopPanel;
+	[SerializeField] GameObject m_upgradeContainer;
+	[SerializeField] TMPro.TextMeshProUGUI m_upgradeCost;
+	[SerializeField] TMPro.TextMeshProUGUI m_upgradeName;
+	[SerializeField] TMPro.TextMeshProUGUI m_upgradeDescription;
+	[SerializeField] Image[] m_progressImages;
+	[SerializeField] Sprite m_filledSprite;
+	[SerializeField] Sprite m_emptySprite;
+	[SerializeField] CompleteButton m_buyButton;
 
 	public static Menu instance;
 
@@ -89,11 +104,29 @@ public class Menu : MonoBehaviour
 		m_slothText.text = m_inventory.slothNumber.ToString();
 		m_soulsText.text = m_inventory.soulsNumber.ToString();
 
-		UpdateQuestPanel();
+		if (m_questPanelIsOpen)
+		{
+			UpdateQuestPanel();
+			foreach (var button in m_navigationButtons)
+			{
+				button.interactable = true;
+			}
+		}
+		else
+		{
+			UpdateShopPanel();
+			foreach (var button in m_navigationButtons)
+			{
+				button.interactable = false;
+			}
+		}
+			
 	}
 
 	public void UpdateQuestPanel()
 	{
+		m_questPanel.SetActive(true);
+		m_shopPanel.SetActive(false);
 		Quest quest = m_questManager.GetCurrentQuest();
 		if (quest == null) return;
 		m_devilImage.sprite = quest.sprite;
@@ -131,5 +164,44 @@ public class Menu : MonoBehaviour
 			m_completedText.SetActive(true);
 			m_completeButton.Disable();
 		}
+	}
+
+	public void UpdateShopPanel()
+	{
+		m_questPanel.SetActive(false);
+		m_shopPanel.SetActive(true);
+		UpgradesManager upgrades = UpgradesManager.instance;
+		if (upgrades.GetProgress() >= 3) m_upgradeContainer.SetActive(false);
+		else
+		{
+			m_upgradeContainer.SetActive(true);
+			m_upgradeCost.text = upgrades.GetCost().ToString();
+		}
+		m_upgradeName.text = upgrades.GetName();
+		m_upgradeDescription.text = upgrades.GetDescription();
+		for (int i = 0; i < 3; i++)
+		{
+			m_progressImages[i].sprite = m_emptySprite;
+		}
+		for (int i = 0; i < upgrades.GetProgress(); i++)
+		{
+			m_progressImages[i].sprite = m_filledSprite;
+		}
+		if (upgrades.CanBuyUpgrade()) m_buyButton.Enable();
+		else m_buyButton.Disable();
+	}
+
+	public void OpenQuests()
+	{
+		m_questPanelIsOpen = true;
+		UpdateMenuValues();
+		SoundFXManager.instance.PlayMenuSound(transform, 1f);
+	}
+
+	public void OpenShop()
+	{
+		m_questPanelIsOpen = false;
+		UpdateMenuValues();
+		SoundFXManager.instance.PlayMenuSound(transform, 1f);
 	}
 }

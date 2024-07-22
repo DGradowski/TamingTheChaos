@@ -9,7 +9,6 @@ public class Hands : Weapon
     [SerializeField] private TamingArea m_tamingArea;
 
     [SerializeField] private float m_baseTamingTime;
-    [SerializeField] private int m_combo = 0;
 
     public override void Start()
     {
@@ -24,7 +23,8 @@ public class Hands : Weapon
         m_catchedEnemy.GetComponent<BoxCollider2D>().enabled = false;
         m_catchedEnemy.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
         m_tamingArea.gameObject.SetActive(true);
-        m_tamingArea.StartTaming(5, m_combo, m_baseTamingTime / m_catchedEnemy.GetHP());
+        float tamingTime = 0.25f + (0.25f * (4 - m_catchedEnemy.GetHP()) + (0.25f * UpgradesManager.instance.extraTime));
+        m_tamingArea.StartTaming(5, UpgradesManager.instance.maxCombo, tamingTime);
     }
 
     // Update is called once per frame

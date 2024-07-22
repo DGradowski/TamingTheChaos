@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: upheavtt SDF
+  m_Name: upper-menu
   m_EditorClassIdentifier: 
-  hashCode: -928235602
+  hashCode: -67830564
   material: {fileID: 8984674740522385080}
-  materialHashCode: 635911118
+  materialHashCode: -2064295300
   m_Version: 1.1.0
   m_SourceFontFileGUID: 55f4aa836f2df61488e75ea10246cf80
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 55f4aa836f2df61488e75ea10246cf80, type: 3}
@@ -2624,7 +2624,7 @@ Material:
     - _TextureWidth: 512
     - _UnderlayDilate: 0
     - _UnderlayOffsetX: 0
-    - _UnderlayOffsetY: -1
+    - _UnderlayOffsetY: 1
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
@@ -2633,12 +2633,12 @@ Material:
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
-    - _FaceColor: {r: 0.8307701, g: 0.37626222, b: 0.13286836, a: 1}
+    - _FaceColor: {r: 0.039546248, g: 0.014443844, b: 0.011612245, a: 1}
     - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderlayColor: {r: 0.09084173, g: 0.0047769533, b: 0.00303527, a: 1}
+    - _UnderlayColor: {r: 0.0074990317, g: 0.0033465356, b: 0.002731743, a: 1}
   m_BuildTextureStacks: []
