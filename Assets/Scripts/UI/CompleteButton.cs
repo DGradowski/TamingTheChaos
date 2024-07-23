@@ -9,6 +9,7 @@ public class CompleteButton : MonoBehaviour
 	[SerializeField] private TMPro.TextMeshProUGUI completeShadow;
 	[SerializeField] private string buttonText;
 	private Animator completeTextAnimator;
+	public bool pressed = false;
 
     private Button m_completeButton;
 
@@ -24,6 +25,7 @@ public class CompleteButton : MonoBehaviour
 		m_completeButton.interactable = true;
 		completeText.text = buttonText;
 		completeShadow.text = buttonText;
+		completeTextAnimator.SetBool("Press", pressed);
 	}
 
     [ContextMenu("Disable")]
@@ -32,6 +34,7 @@ public class CompleteButton : MonoBehaviour
 		completeText.text = "";
 		completeShadow.text = "";
 		m_completeButton.interactable = false;
+		pressed = false;
     }
 
     public void OnPress()
@@ -39,11 +42,13 @@ public class CompleteButton : MonoBehaviour
 		if (m_completeButton.interactable == false) return;
         completeTextAnimator.SetBool("Press", true);
 		SoundFXManager.instance.PlayMenuSound(transform, 1f);
+		pressed = true;
 	}
 
 	public void OnRelease()
 	{
 		if (m_completeButton.interactable == false) return;
 		completeTextAnimator.SetBool("Press", false);
+		pressed = false;
 	}
 }

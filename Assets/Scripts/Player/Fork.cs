@@ -12,6 +12,8 @@ public class Fork : Weapon
     [SerializeField] private List<Enemy> m_enemiesInRange;
     [SerializeField] private List<Enemy> m_attackedEnemies;
     [SerializeField] private List<Enemy> m_enemiesToDestroy;
+    [SerializeField] private Sprite m_goldenFork;
+
 
     // Start is called before the first frame update
     public override void Start()
@@ -95,5 +97,10 @@ public class Fork : Weapon
             Instantiate(enemy.m_coinPrefab, enemy.transform.position, Quaternion.identity);
             Destroy(enemy.gameObject);
         }
+    }
+
+    public void UpgradeFork()
+    {
+        GetComponent<SpriteRenderer>().sprite = m_goldenFork;
     }
 }

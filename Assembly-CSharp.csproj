@@ -62,14 +62,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\CompleteButton.cs" />
     <Compile Include="Assets\Scripts\UI\ChangeButtonText.cs" />
+    <Compile Include="Assets\Scripts\Logo.cs" />
     <Compile Include="Assets\Scripts\Player\WeaponSelection.cs" />
     <Compile Include="Assets\Scripts\Managers\SoundMixerManager.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Managers\SoundFXManager.cs" />
-    <Compile Include="Assets\Logo.cs" />
-    <Compile Include="Assets\BlinkingEye.cs" />
     <Compile Include="Assets\Scripts\PlayerInputs.cs" />
-    <Compile Include="Assets\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\BlinkingEye.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\Managers\UpgradesManager.cs" />
     <Compile Include="Assets\Scripts\Managers\Quest.cs" />

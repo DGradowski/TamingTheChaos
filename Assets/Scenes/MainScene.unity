@@ -36754,6 +36754,7 @@ MonoBehaviour:
   completeText: {fileID: 2015500915}
   completeShadow: {fileID: 1033100638}
   buttonText: COMPLETE
+  pressed: 0
 --- !u!1001 &183228397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36879,7 +36880,7 @@ Transform:
   m_GameObject: {fileID: 187942969}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.083, y: -0.243, z: 0}
+  m_LocalPosition: {x: 0, y: -0.243, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37173,7 +37174,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01247704, y: 0.07751939}
+  m_Offset: {x: 0.1850507, y: 0.06914212}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5549096, y: 0.34496123}
@@ -37184,7 +37185,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3103173, y: 0.5}
+  m_Size: {x: 0.9014512, y: 0.42192075}
   m_EdgeRadius: 0
 --- !u!114 &192841663
 MonoBehaviour:
@@ -38619,7 +38620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000022927, y: 17.588}
+  m_AnchoredPosition: {x: -14, y: 17.588}
   m_SizeDelta: {x: 401.94, y: 78.0433}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382264975
@@ -39703,12 +39704,12 @@ SpriteRenderer:
   m_SortingLayerID: -1295589733
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 28f28b5b9bf671a45b2a6ed14707aa93, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b8c2db73f815eb46a7bb40e27f066f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -41572,7 +41573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.080200195, y: 190.32}
+  m_AnchoredPosition: {x: 0.080078125, y: 190.32007}
   m_SizeDelta: {x: -274.8923, y: -380.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &602477142
@@ -41860,7 +41861,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1195185458}
   m_Father: {fileID: 2082755784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 336.96}
 --- !u!111 &621279451
@@ -42389,9 +42391,9 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -42630,10 +42632,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.67095315, y: 0.003749311}
+  m_Offset: {x: 0.68136, y: -0.010126531}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.17996585, y: 0.43777114}
+    pivot: {x: 0.18737327, y: 0.44982108}
     oldSize: {x: 1.5, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -42641,7 +42643,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9956763, y: 0.38138276}
+  m_Size: {x: 1.01649, y: 0.3709759}
   m_EdgeRadius: 0
 --- !u!114 &718269607
 MonoBehaviour:
@@ -42664,6 +42666,7 @@ MonoBehaviour:
   m_enemiesInRange: []
   m_attackedEnemies: []
   m_enemiesToDestroy: []
+  m_goldenFork: {fileID: 21300000, guid: f277759ef53adbb44a2bd1de95aa8ef2, type: 3}
 --- !u!95 &718269608
 Animator:
   serializedVersion: 5
@@ -43502,6 +43505,7 @@ MonoBehaviour:
   completeText: {fileID: 418782181}
   completeShadow: {fileID: 1354245618}
   buttonText: BUY
+  pressed: 0
 --- !u!114 &847893780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44254,9 +44258,9 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -44322,8 +44326,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 48.800003, y: 0.75775}
-  m_SizeDelta: {x: 349.2944, y: 60}
+  m_AnchoredPosition: {x: 48.088116, y: 0.75775}
+  m_SizeDelta: {x: 347.8708, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1013155192
 MonoBehaviour:
@@ -44345,7 +44349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2013213
+  m_text: 20132131111111111
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 390ace2be8b91a0448517d7b1c4c79e1, type: 2}
   m_sharedMaterial: {fileID: 8984674740522385080, guid: 390ace2be8b91a0448517d7b1c4c79e1, type: 2}
@@ -44388,9 +44392,9 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -45204,9 +45208,9 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -45441,6 +45445,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183613171}
   m_CullTransparentMesh: 1
+--- !u!1 &1195185457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1195185458}
+  - component: {fileID: 1195185459}
+  m_Layer: 0
+  m_Name: Shine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1195185458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195185457}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 621279450}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1195185459
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195185457}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 497108051
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 8dc8cfa1c8b1d7d438f007a1c4d065c8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.05490196}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2, y: 2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1202847229
 GameObject:
   m_ObjectHideFlags: 0
@@ -45701,7 +45789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0010402, y: -47}
+  m_AnchoredPosition: {x: -14.00104, y: -47}
   m_SizeDelta: {x: 416.61, y: 45.115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1265402496
@@ -45801,6 +45889,108 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265402494}
   m_CullTransparentMesh: 1
+--- !u!1 &1287689846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1287689850}
+  - component: {fileID: 1287689849}
+  - component: {fileID: 1287689848}
+  - component: {fileID: 1287689847}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1287689847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287689846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1287689848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287689846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1287689849
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287689846}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 1
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1287689850
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287689846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2051052844}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1302844943
 GameObject:
   m_ObjectHideFlags: 0
@@ -45910,8 +46100,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38.572, y: -0.0000014901}
-  m_SizeDelta: {x: 143.8816, y: 60}
+  m_AnchoredPosition: {x: 78.87571, y: -0.0000014901}
+  m_SizeDelta: {x: 224.4893, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1307960045
 MonoBehaviour:
@@ -45933,9 +46123,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1000
-
-'
+  m_text: 1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 390ace2be8b91a0448517d7b1c4c79e1, type: 2}
   m_sharedMaterial: {fileID: 8984674740522385080, guid: 390ace2be8b91a0448517d7b1c4c79e1, type: 2}
@@ -47206,9 +47394,9 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -47477,9 +47665,9 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -48133,7 +48321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1661175789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49145,9 +49333,9 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -49279,9 +49467,9 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -49571,7 +49759,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -50115,6 +50303,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049962367}
   m_CullTransparentMesh: 1
+--- !u!1 &2051052843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2051052844}
+  - component: {fileID: 2051052846}
+  - component: {fileID: 2051052845}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2051052844
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051052843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1287689850}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2051052845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051052843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 55d238da83b938a43a30eddf2d79f168, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2051052846
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051052843}
+  m_CullTransparentMesh: 1
 --- !u!1 &2075387256
 GameObject:
   m_ObjectHideFlags: 0
@@ -50405,16 +50668,16 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: bd1f30efcc4aa7548b1a3601e2c4a8cf, type: 3}
     name: Behemoth
     sobriquet: the Great
-    inProgressText: "\"I am seeking companions for my feast. I am celebrating my
-      birthday, but none of the other devils wish to attend. They claim it is the
-      third time this week. How am I supposed to track time in a place where the
-      sun never shines? Provide me with <b>twelve</b> brave men who can handle the
-      copious amounts of food and drink I have prepared.\u201E"
-    completedText: I've poured my soul into every detail of this party, and for what?
-      Some devil played a trick on me and <b>turned all the wine into water</b>.
-      Can you believe it? To add insult to injury, <b>one of the sinners betrayed
-      me</b> and went to someone else's feast. I swear, this was the last supper
-      I will ever prepare!
+    inProgressText: '"Hello. I am seeking companions for my feast. I am celebrating
+      my birthday, but none of the other devils wish to attend. They claim it is
+      the third time this week. How am I supposed to track time in a place where
+      the sun never shines? Provide me with twelve brave men who can handle the copious
+      amounts of food and drink I have prepared."'
+    completedText: '"I''ve poured my soul into every detail of this party, and for
+      what? Some devil played a trick on me and turned all the wine into water. Can
+      you believe it? To add insult to injury, one of the sinners betrayed me and
+      went to someone else''s feast. I swear, this was the last supper I will ever
+      prepare!"'
     requestedType: 00000000
     requestedQuantity: 0c000000
     reward: 100
@@ -50425,26 +50688,36 @@ MonoBehaviour:
     inProgressText: '"Hello. Cats in hell could use some petting when they rest from
       their duties of scratching sinners and leaving fur on their clothes. A select
       number of idle souls would be <b>purr-fect</b> for this role."'
-    completedText: That was a <b>cat</b>astrophe. The sinners seemed to enjoy it
+    completedText: '"That was a <b>cat</b>astrophe. The sinners seemed to enjoy it
       far too much, we definitely cannot make it their duty <b>fur-ever</b>. Next
-      time provide someone who's at least allergic to cats.
+      time provide someone who''s at least allergic to cats."'
     requestedType: 06000000
     requestedQuantity: 28000000
+    reward: 250
+    inProgress: 1
+  - sprite: {fileID: 21300000, guid: aaba5577b651bdb429c5d16b18d55faf, type: 3}
+    name: Cerberus
+    sobriquet: The Hellhound
+    inProgressText: "\u201EWoof woof woof. Woof woof woof woof! Woof! Woof woof woof
+      woof! Grrrrrr\u2026\u201C"
+    completedText: '"Woof!" *tail wagging*'
+    requestedType: 03000000
+    requestedQuantity: 32000000
     reward: 300
     inProgress: 1
   - sprite: {fileID: 21300000, guid: 593408452f8a6f54cbe7aeb67e339ffa, type: 3}
     name: Definitely Not God
     sobriquet: 
-    inProgressText: '"Ekhm.. Greetings, esteemed tormentor.. Existence in the realm
-      of.. the infernal.. can indeed become rather tedious sometimes.. am I right?
-      I seek engegement for.. for this is my
+    inProgressText: '"Ekhm... Greetings, esteemed tormentor.. Existence in the realm
+      of... the infernal... can indeed become rather tedious sometimes.. am I right?
+      I seek engegement for... for this is my
 
       commandment. Thank you."'
-    completedText: Divine! Your discrection in this matter is greatly valued. Let
-      there be light.. illumined by the fires of hell, of course!
+    completedText: '"Divine! Your discrection in this matter is greatly valued. Let
+      there be light... illumined by the fires of hell, of course!"'
     requestedType: 02000000
     requestedQuantity: 4d000000
-    reward: 300
+    reward: 400
     inProgress: 1
   - sprite: {fileID: 21300000, guid: d6d2a9e04d9cd7a459c8da5175121f3b, type: 3}
     name: Beelzebob
@@ -50460,11 +50733,69 @@ MonoBehaviour:
       done through, thanks. Anyway, my company lost the tender for building a stairway
       to heaven, but next week we\u2019re starting the construction of a new restaurant
       in hell. I\u2019ll let you know when I need more people.\""
-    requestedType: 0100000003000000
-    requestedQuantity: 6400000064000000
+    requestedType: 01000000
+    requestedQuantity: 64000000
     reward: 500
     inProgress: 1
+  - sprite: {fileID: 21300000, guid: aff4026cf069aac45ba886a29febe242, type: 3}
+    name: Porkratis
+    sobriquet: the Loving Husband
+    inProgressText: "\"Hey, man. My marriage has been deteriorating lately. I think
+      we've lost the spark. I went through hell and back to make her happier, but
+      I\u2019m out of ideas. Could you provide me with a few envious souls? Perhaps
+      they could teach me some tricks to make my wife jealous and reignite the passion
+      between us\u2026\""
+    completedText: "\"My wife is mad as hell. I\u2019ve never seen her so furious.
+      She said that no matter what I do, it won\u2019t change the fact that I lost
+      all of her golden jewelry in a bet and that I have anger issues that our children
+      could also inherit. She advised me to overcome my demons and quit my gambling
+      addiction, but she is still filing for divorce and will only change her mind
+      if everything around here freezes over. I think she\u2019s already found some
+      handsome devil to take my place. I hope she goes to Heaven!\""
+    requestedType: 05000000
+    requestedQuantity: 96000000
+    reward: 750
+    inProgress: 1
+  - sprite: {fileID: 21300000, guid: e059228ecd1f32c41b30a19a22ccf91d, type: 3}
+    name: Ebenezer McDevil
+    sobriquet: The Businessman
+    inProgressText: "\u201EHello. We are currently facing a significant decline in
+      soul transactions, with sales down by at least 66% compared to the previous
+      month. We urgently require skilled business professionals to help develop more
+      attractive contracts. The goal is to attract a greater number of individuals
+      seeking to make deals with the devil.\u201C"
+    completedText: "\u201EThanks. Our advocates work hard but the sinners work harder,
+      constantly coming up with new ways to get way from established arrangements.
+      Rest assured, they will face the consequences; there is no escape, not even
+      if they fled to the moon.\u201C"
+    requestedType: 04000000
+    requestedQuantity: fa000000
+    reward: 1000
+    inProgress: 1
+  - sprite: {fileID: 21300000, guid: fbcab60bd21648c42819ee47194e2c9d, type: 3}
+    name: Muddy
+    sobriquet: The Filthmaster
+    inProgressText: "\"Huh? What the hell are you still doing here? Haven\u2019t
+      you finished for the day? If you\u2019re intent on staying, perhaps you could
+      be of service by capturing any remaining souls. I need to polish the floor,
+      and I\u2019d prefer it to remain clean without any new marks afterwards. If
+      you\u2019re up for it, I can offer you a reward - something I discovered while
+      cleaning yesterday.\""
+    completedText: "\"Look at those fools - they\u2019ll never learn. They keep trying
+      to escape purgatory, only to end up here instead. You may stay as long as you
+      like, but no one else is coming today, and I\u2019m heading home as well. Oh,
+      I almost forgot. Here\u2019s a golden fork I found; I was going to throw it
+      away, but you may as well have it. It doesn\u2019t seem to serve any purpose,
+      but it does shine quite nicely. See you in Hell.\""
+    requestedType: 07000000
+    requestedQuantity: e8030000
+    reward: 2000
+    inProgress: 1
   m_questNumber: 0
+  extraQuestIsAdded: 0
+  m_completedQuests: 0
+  fork: {fileID: 718269607}
+  m_weaponSelection: {fileID: 187942971}
 --- !u!1 &2116688205
 GameObject:
   m_ObjectHideFlags: 0
@@ -50805,3 +51136,4 @@ SceneRoots:
   - {fileID: 23400569}
   - {fileID: 2112696711}
   - {fileID: 1021132719}
+  - {fileID: 1287689850}

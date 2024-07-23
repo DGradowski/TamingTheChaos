@@ -89,8 +89,8 @@ public class TamingArea : MonoBehaviour
         float eye_width = m_eye.GetComponent<RectTransform>().rect.width;
         float eye_height = m_eye.GetComponent<RectTransform>().rect.height;
 
-        m_max_width = m_rectTransform.rect.width - eye_width;
-        m_max_height = m_rectTransform.rect.height - eye_height - 200;
+        m_max_width = Screen.width - eye_width;
+        m_max_height = Screen.height - eye_height - 200;
 
         m_min_width = 0 + eye_width;
         m_min_height = 0 + eye_height;

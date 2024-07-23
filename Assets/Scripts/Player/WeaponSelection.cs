@@ -71,7 +71,7 @@ public class WeaponSelection : MonoBehaviour
 		transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 	}
 
-	void SelectWeapon(int index)
+	public void SelectWeapon(int index)
 	{
 		if (!m_isActive) return;
 		if (index >= m_weapons.Length) return;
@@ -83,6 +83,7 @@ public class WeaponSelection : MonoBehaviour
 		m_weapons[index].gameObject.SetActive(true);
 		m_selectedWeapon = m_weapons[index];
 		m_selectedWeapon.gameObject.transform.position = transform.position;
+		m_selectedWeapon.StopAttack();
 	}
 
 	public void DisableSelectingWeapon()
