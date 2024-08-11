@@ -18,7 +18,7 @@ public class BlinkingEye : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.unscaledDeltaTime;
         if (timer >= time) 
         {
             id++;

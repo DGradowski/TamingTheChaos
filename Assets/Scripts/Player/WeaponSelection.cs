@@ -11,6 +11,7 @@ public class WeaponSelection : MonoBehaviour
 	private Vector3 m_mouseWorldPos;
 	private Camera m_camera;
 	PlayerInputs m_playerInputs;
+	bool m_pichforkIsSelected = true;
 
 	private Weapon m_selectedWeapon;
 	[SerializeField] private Weapon[] m_weapons;
@@ -23,8 +24,7 @@ public class WeaponSelection : MonoBehaviour
 		m_playerInputs = new PlayerInputs();
 
 		m_playerInputs.Movement.Enable();
-		m_playerInputs.Movement.FirstWeapon.started += context => SelectWeapon(0);
-		m_playerInputs.Movement.SecondWeapon.started += context => SelectWeapon(1);
+		m_playerInputs.Movement.ChangeWeapon.started += context => ChangeWeapon();
         m_playerInputs.Movement.Attack.started += UseWeapon;
         m_playerInputs.Movement.Attack.canceled += DisableWeapon;
         SelectWeapon(0);
@@ -82,6 +82,29 @@ public class WeaponSelection : MonoBehaviour
 		}
 		m_weapons[index].gameObject.SetActive(true);
 		m_selectedWeapon = m_weapons[index];
+		m_selectedWeapon.gameObject.transform.position = transform.position;
+		m_selectedWeapon.StopAttack();
+	}
+
+	public void ChangeWeapon()
+	{
+		if (!m_isActive) return;
+
+		foreach (Weapon weapon in m_weapons)
+		{
+			weapon.gameObject.SetActive(false);
+		}
+
+		m_pichforkIsSelected = !m_pichforkIsSelected;
+
+		if (m_pichforkIsSelected)
+		{
+			SelectWeapon(0);
+		}
+		else
+		{
+			SelectWeapon(1);
+		}
 		m_selectedWeapon.gameObject.transform.position = transform.position;
 		m_selectedWeapon.StopAttack();
 	}

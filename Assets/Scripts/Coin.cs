@@ -24,21 +24,27 @@ public class Coin : MonoBehaviour
     private float m_timer = 0;
     private bool m_inMagnetRange = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private Vector2 moveVector;
+	Vector2 velocity = Vector2.zero;
+
+	// Start is called before the first frame update
+	void Start()
     {
         m_playerTransform = FindAnyObjectByType<PlayerMovement>().transform;
         m_value = m_baseValue;
         m_spriteRenderer.sprite = m_sprites[m_stage];
         m_value = 8;
-    }
+        moveVector = transform.position - m_playerTransform.position;
+	}
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 moveVector = transform.position - m_playerTransform.position;
+        Vector2 newVector = transform.position - m_playerTransform.position;
         m_speed = (m_baseSpeed / 3) * (m_stage + 1);
         Vector2 magnetVector = Vector2.zero;
+
+        
 
         if (m_inMagnetRange)
         {
@@ -47,7 +53,7 @@ public class Coin : MonoBehaviour
             magnetVector = magnetVector.normalized * (m_magneticDrag / (distance * distance + 2)) * UpgradesManager.instance.soulsMagnet * 1.5f;
 		}
 
-        moveVector = moveVector.normalized * m_speed + magnetVector;
+        moveVector = Vector2.SmoothDamp(moveVector, newVector, ref velocity, .3f).normalized * m_speed + magnetVector;
 
         transform.position += new Vector3(moveVector.x, moveVector.y, 0);
     }

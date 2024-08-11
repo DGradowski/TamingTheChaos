@@ -55,18 +55,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""FirstWeapon"",
+                    ""name"": ""ChangeWeapon"",
                     ""type"": ""Button"",
                     ""id"": ""02cdd1b5-0043-4953-863a-cfd48ee700de"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SecondWeapon"",
-                    ""type"": ""Button"",
-                    ""id"": ""7abc874d-b59f-467e-9d7c-aca90cea9ca3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -163,22 +154,11 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""37132531-97c0-459e-bc41-63e3a7a781f3"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""FirstWeapon"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a43e90f0-5365-4369-a4a5-f03eeef7bcc6"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SecondWeapon"",
+                    ""action"": ""ChangeWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -220,8 +200,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         m_Movement_Attack = m_Movement.FindAction("Attack", throwIfNotFound: true);
         m_Movement_Run = m_Movement.FindAction("Run", throwIfNotFound: true);
-        m_Movement_FirstWeapon = m_Movement.FindAction("FirstWeapon", throwIfNotFound: true);
-        m_Movement_SecondWeapon = m_Movement.FindAction("SecondWeapon", throwIfNotFound: true);
+        m_Movement_ChangeWeapon = m_Movement.FindAction("ChangeWeapon", throwIfNotFound: true);
         m_Movement_Menu = m_Movement.FindAction("Menu", throwIfNotFound: true);
     }
 
@@ -287,8 +266,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Move;
     private readonly InputAction m_Movement_Attack;
     private readonly InputAction m_Movement_Run;
-    private readonly InputAction m_Movement_FirstWeapon;
-    private readonly InputAction m_Movement_SecondWeapon;
+    private readonly InputAction m_Movement_ChangeWeapon;
     private readonly InputAction m_Movement_Menu;
     public struct MovementActions
     {
@@ -297,8 +275,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Movement_Move;
         public InputAction @Attack => m_Wrapper.m_Movement_Attack;
         public InputAction @Run => m_Wrapper.m_Movement_Run;
-        public InputAction @FirstWeapon => m_Wrapper.m_Movement_FirstWeapon;
-        public InputAction @SecondWeapon => m_Wrapper.m_Movement_SecondWeapon;
+        public InputAction @ChangeWeapon => m_Wrapper.m_Movement_ChangeWeapon;
         public InputAction @Menu => m_Wrapper.m_Movement_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
@@ -318,12 +295,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Run.started += instance.OnRun;
             @Run.performed += instance.OnRun;
             @Run.canceled += instance.OnRun;
-            @FirstWeapon.started += instance.OnFirstWeapon;
-            @FirstWeapon.performed += instance.OnFirstWeapon;
-            @FirstWeapon.canceled += instance.OnFirstWeapon;
-            @SecondWeapon.started += instance.OnSecondWeapon;
-            @SecondWeapon.performed += instance.OnSecondWeapon;
-            @SecondWeapon.canceled += instance.OnSecondWeapon;
+            @ChangeWeapon.started += instance.OnChangeWeapon;
+            @ChangeWeapon.performed += instance.OnChangeWeapon;
+            @ChangeWeapon.canceled += instance.OnChangeWeapon;
             @Menu.started += instance.OnMenu;
             @Menu.performed += instance.OnMenu;
             @Menu.canceled += instance.OnMenu;
@@ -340,12 +314,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Run.started -= instance.OnRun;
             @Run.performed -= instance.OnRun;
             @Run.canceled -= instance.OnRun;
-            @FirstWeapon.started -= instance.OnFirstWeapon;
-            @FirstWeapon.performed -= instance.OnFirstWeapon;
-            @FirstWeapon.canceled -= instance.OnFirstWeapon;
-            @SecondWeapon.started -= instance.OnSecondWeapon;
-            @SecondWeapon.performed -= instance.OnSecondWeapon;
-            @SecondWeapon.canceled -= instance.OnSecondWeapon;
+            @ChangeWeapon.started -= instance.OnChangeWeapon;
+            @ChangeWeapon.performed -= instance.OnChangeWeapon;
+            @ChangeWeapon.canceled -= instance.OnChangeWeapon;
             @Menu.started -= instance.OnMenu;
             @Menu.performed -= instance.OnMenu;
             @Menu.canceled -= instance.OnMenu;
@@ -380,8 +351,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
-        void OnFirstWeapon(InputAction.CallbackContext context);
-        void OnSecondWeapon(InputAction.CallbackContext context);
+        void OnChangeWeapon(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
     }
 }

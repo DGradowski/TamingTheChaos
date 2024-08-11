@@ -24,8 +24,10 @@ public class TamingArea : MonoBehaviour
 
 	[Header("Game Objects")]
 	[SerializeField] GameObject m_eye;
+	[SerializeField] GameObject m_shine;
 	[SerializeField] Inventory m_inventory;
 	[SerializeField] ComboText m_comboText;
+	[SerializeField] Goal m_goal;
 
 	[Header("Audio")]
 	[SerializeField] AudioClip[] m_tamingClips;
@@ -67,7 +69,11 @@ public class TamingArea : MonoBehaviour
 	public void ShowNewEye(bool first)
 	{
 		m_eye.GetComponent<TamingPoint>().ChangeStage(0);
-		if (!first) Instantiate(m_goodPopParticle, Camera.main.ScreenToWorldPoint(m_eye.transform.position), m_eye.transform.rotation);
+		if (!first)
+		{
+			Instantiate(m_goodPopParticle, Camera.main.ScreenToWorldPoint(m_eye.transform.position), m_eye.transform.rotation);
+			CameraControl.instance.ShakeCamera(1.75f, 0.1f);
+		}
 		GenerateNewPosition();
         m_timer = 0;
 		m_currentStage = 0;
@@ -99,7 +105,8 @@ public class TamingArea : MonoBehaviour
         float y_pos = Random.value * (m_max_height - m_min_height) + m_min_height;
 
         m_eye.transform.position = new Vector3(x_pos, y_pos, 0);
-    }
+		m_shine.transform.position = new Vector3(x_pos, y_pos, 0);
+	}
 
 	public void StopTaming()
 	{
@@ -108,6 +115,7 @@ public class TamingArea : MonoBehaviour
 		gameObject.SetActive(false);
 		DeactivateAllImages();
 		m_comboText.UpdateText(0);
+		CursorManager.instance.SetNormalCursor();
 	}
 
 	public void ActivateAllImages()
@@ -133,6 +141,9 @@ public class TamingArea : MonoBehaviour
 		int value = CalculateValue(basic, m_hands.GetChatchedEnemyHP(), combo);
 		m_inventory.ChangeSinnersNumber(m_hands.GetChatchedEnemyType(), value);
 		SoundFXManager.instance.PlayRandomSoundFXClip(m_successClips, transform, 1f);
+		m_goal.ShowGoal(m_hands.GetChatchedEnemyType());
+		Inventory.instance.CreateSinnerPopup(m_hands.m_enemyHolder.transform, value);
+		AlertManager.instance.ShowAlerts();
 		StopTaming();
 	}
 

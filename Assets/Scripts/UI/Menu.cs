@@ -7,8 +7,15 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-	private bool m_menuIsActive;
-	private bool m_questPanelIsOpen = true;
+	private enum Panel
+	{
+		Quest,
+		Shop,
+		HowToPlay
+	}
+
+	public bool menuIsActive;
+	private Panel m_currentPanel = Panel.Quest;
 
 	[Header("GameObjects")]
 	[SerializeField] private GameObject m_menuPanel;
@@ -28,7 +35,6 @@ public class Menu : MonoBehaviour
 	[SerializeField] TMPro.TextMeshProUGUI m_soulsText;
 
 	[Header("Quest Panel")]
-	[SerializeField] Button[] m_navigationButtons;
 	[SerializeField] GameObject m_questPanel;
 	[SerializeField] QuestManager m_questManager;
 	[SerializeField] Image m_devilImage;
@@ -53,6 +59,11 @@ public class Menu : MonoBehaviour
 	[SerializeField] Sprite m_emptySprite;
 	[SerializeField] CompleteButton m_buyButton;
 
+	[Header("How To Play Panel")]
+	[SerializeField] GameObject m_howToPlayPanel;
+	[SerializeField] GameObject[] m_htpPages;
+	int m_pageNumber = 0;
+
 	public static Menu instance;
 
 	private void Awake()
@@ -74,7 +85,16 @@ public class Menu : MonoBehaviour
 	private void MenuButton(InputAction.CallbackContext context)
 	{
 		TurnOnOffMenu();
-		if (m_menuIsActive)
+	}
+
+	public void TurnOnOffMenu()
+	{
+		if (m_menuPanel == null) return;
+		menuIsActive = !menuIsActive;
+		m_menuPanel.SetActive(menuIsActive);
+		SoundFXManager.instance.PlayMenuSound(transform, .5f);
+		UpdateMenuValues();
+		if (menuIsActive)
 		{
 			Time.timeScale = 0f;
 		}
@@ -82,15 +102,6 @@ public class Menu : MonoBehaviour
 		{
 			Time.timeScale = 1f;
 		}
-	}
-
-	public void TurnOnOffMenu()
-	{
-		if (m_menuPanel == null) return;
-		m_menuIsActive = !m_menuIsActive;
-		m_menuPanel.SetActive(m_menuIsActive);
-		SoundFXManager.instance.PlayMenuSound(transform, .5f);
-		UpdateMenuValues();
 	}
 
 	public void UpdateMenuValues()
@@ -103,30 +114,27 @@ public class Menu : MonoBehaviour
 		m_envyText.text = m_inventory.envyNumber.ToString();
 		m_slothText.text = m_inventory.slothNumber.ToString();
 		m_soulsText.text = m_inventory.soulsNumber.ToString();
+		AlertManager.instance.ShowAlerts();
 
-		if (m_questPanelIsOpen)
+		if (m_currentPanel == Panel.Quest)
 		{
 			UpdateQuestPanel();
-			foreach (var button in m_navigationButtons)
-			{
-				button.interactable = true;
-			}
+		}
+		else if (m_currentPanel == Panel.Shop)
+		{
+			UpdateShopPanel();
 		}
 		else
 		{
-			UpdateShopPanel();
-			foreach (var button in m_navigationButtons)
-			{
-				button.interactable = false;
-			}
+			UpdateHowToPlayPanel();
 		}
-			
 	}
 
 	public void UpdateQuestPanel()
 	{
 		m_questPanel.SetActive(true);
 		m_shopPanel.SetActive(false);
+		m_howToPlayPanel.SetActive(false);
 		Quest quest = m_questManager.GetCurrentQuest();
 		if (quest == null) return;
 		m_devilImage.sprite = quest.sprite;
@@ -149,7 +157,7 @@ public class Menu : MonoBehaviour
 				var request = Instantiate(m_requestPrefab, m_requestCointainer.transform).GetComponent<Request>();
 				request.SetRequest(quest.requestedType[i], quest.requestedQuantity[i]);
 			}
-			if (m_questManager.IsRequestCompleted()) m_completeButton.Enable();
+			if (m_questManager.IsRequestCompleted(m_questManager.m_questNumber)) m_completeButton.Enable();
 			else m_completeButton.Disable();
 		}
 		else
@@ -170,6 +178,7 @@ public class Menu : MonoBehaviour
 	{
 		m_questPanel.SetActive(false);
 		m_shopPanel.SetActive(true);
+		m_howToPlayPanel.SetActive(false);
 		UpgradesManager upgrades = UpgradesManager.instance;
 		if (upgrades.GetProgress() >= 3) m_upgradeContainer.SetActive(false);
 		else
@@ -191,16 +200,44 @@ public class Menu : MonoBehaviour
 		else m_buyButton.Disable();
 	}
 
+	public void UpdateHowToPlayPanel()
+	{
+		m_questPanel.SetActive(false);
+		m_shopPanel.SetActive(false);
+		m_howToPlayPanel.SetActive(true);
+		foreach(GameObject x in m_htpPages)
+		{
+			x.SetActive(false);
+		}
+		m_htpPages[m_pageNumber].SetActive(true);
+	}
+
+	public void ChangeHowToPlayPage(int value)
+	{
+		m_pageNumber += value;
+		if (m_pageNumber < 0) m_pageNumber = m_htpPages.Length - 1;
+		else if (m_pageNumber >= m_htpPages.Length) m_pageNumber = 0;
+		SoundFXManager.instance.PlayMenuSound(transform, 1f);
+		UpdateHowToPlayPanel();
+	}
+
 	public void OpenQuests()
 	{
-		m_questPanelIsOpen = true;
+		m_currentPanel = Panel.Quest;
 		UpdateMenuValues();
 		SoundFXManager.instance.PlayMenuSound(transform, 1f);
 	}
 
 	public void OpenShop()
 	{
-		m_questPanelIsOpen = false;
+		m_currentPanel = Panel.Shop;
+		UpdateMenuValues();
+		SoundFXManager.instance.PlayMenuSound(transform, 1f);
+	}
+
+	public void OpenHowToPlay()
+	{
+		m_currentPanel = Panel.HowToPlay;
 		UpdateMenuValues();
 		SoundFXManager.instance.PlayMenuSound(transform, 1f);
 	}

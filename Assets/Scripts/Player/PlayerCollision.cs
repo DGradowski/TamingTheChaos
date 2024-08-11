@@ -17,7 +17,15 @@ public class PlayerCollision : MonoBehaviour
             Vector2 vector = (transform.position - collision.transform.position);
             m_playerMovement.StartHitMotion(vector.normalized);
             SoundFXManager.instance.PlayRandomSoundFXClip(m_damageClips, transform, 1f);
-            if (m_taminArea.isActiveAndEnabled)
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            enemy.GetHit(1, (vector * -1).normalized);
+            if (enemy.GetHP() <= 0)
+            {
+                Destroy(enemy.gameObject);
+            }
+			CameraControl.instance.ShakeCamera(2f, 0.25f);
+
+			if (m_taminArea.isActiveAndEnabled)
             {
                 m_taminArea.FailTaming();
             }
@@ -26,7 +34,10 @@ public class PlayerCollision : MonoBehaviour
         {
             Coin coin = collision.collider.gameObject.GetComponent<Coin>();
             SoundFXManager.instance.PlaySoundFXClip(coin.m_clip, transform, 1f);
-            FindAnyObjectByType<Inventory>().ChangeSoulsNumber(coin.GetValue());
+            Inventory.instance.CreateCoinPopup(coin.gameObject.transform, coin.GetValue());
+            Inventory.instance.ChangeSoulsNumber(coin.GetValue());
+            Coins.instance.ShowCoins();
+            AlertManager.instance.ShowAlerts();
             Destroy(coin.gameObject);
         }
     }

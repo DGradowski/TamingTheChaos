@@ -58,4 +58,11 @@ public class MainMenu : MonoBehaviour
     {
 		m_howToPlay.SetActive(true);
 	}
+
+    public void SkipText()
+    {
+        if (m_time <= t_text1) m_time = t_text1;
+        else if (m_time <= t_text2) m_time = t_text2;
+        else if (m_time <= t_continueButton) m_time = t_continueButton;
+    }
 }

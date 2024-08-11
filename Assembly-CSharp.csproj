@@ -61,13 +61,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\CompleteButton.cs" />
+    <Compile Include="Assets\Scripts\QuestPopup.cs" />
     <Compile Include="Assets\Scripts\UI\ChangeButtonText.cs" />
     <Compile Include="Assets\Scripts\Logo.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\Tutorial.cs" />
+    <Compile Include="Assets\Scripts\Coins.cs" />
     <Compile Include="Assets\Scripts\Player\WeaponSelection.cs" />
     <Compile Include="Assets\Scripts\Managers\SoundMixerManager.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\CoinPopup.cs" />
+    <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\Managers\SoundFXManager.cs" />
+    <Compile Include="Assets\Scripts\CursorChangeOnHover.cs" />
     <Compile Include="Assets\Scripts\PlayerInputs.cs" />
     <Compile Include="Assets\Scripts\BlinkingEye.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
@@ -76,17 +82,22 @@
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Player\Hands.cs" />
     <Compile Include="Assets\Scripts\UI\ProgressImage.cs" />
+    <Compile Include="Assets\Scripts\HowToPlayPanel.cs" />
     <Compile Include="Assets\Scripts\SliderHandle.cs" />
     <Compile Include="Assets\Scripts\Managers\QuestManager.cs" />
     <Compile Include="Assets\Scripts\Player\Fork.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\TutorialDialogue.cs" />
     <Compile Include="Assets\Scripts\UI\Menu.cs" />
     <Compile Include="Assets\Scripts\UI\TamingArea.cs" />
+    <Compile Include="Assets\Scripts\Goal.cs" />
     <Compile Include="Assets\Scripts\UI\ComboText.cs" />
     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Request.cs" />
+    <Compile Include="Assets\Scripts\AlertManager.cs" />
     <Compile Include="Assets\Scripts\Player\HandAnimation.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Managers\CursorManager.cs" />
     <Compile Include="Assets\Scripts\UI\ContentFitterRefresh.cs" />
     <Compile Include="Assets\Scripts\UI\TamingPoint.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCollision.cs" />

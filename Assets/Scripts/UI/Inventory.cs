@@ -8,6 +8,10 @@ public class Inventory : MonoBehaviour
 {
 	public static Inventory instance;
 
+	[SerializeField] private GameObject m_coinPopup;
+	[SerializeField] private GameObject m_sinnerPopup;
+	[SerializeField] private GameObject canvas;
+
 	private void Awake()
 	{
 		if (instance == null)
@@ -101,5 +105,21 @@ public class Inventory : MonoBehaviour
 	public void ChangeSoulsNumber(int value)
 	{
 		soulsNumber += value;
+	}
+
+	public void CreateCoinPopup(Transform coin, int value)
+	{
+		GameObject popup = Instantiate(m_coinPopup);
+		popup.transform.SetParent(canvas.transform, false);
+		popup.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(coin.position);
+		popup.GetComponent<CoinPopup>().Setup(value);
+	}
+
+	public void CreateSinnerPopup(Transform sinner, int value)
+	{
+		GameObject popup = Instantiate(m_sinnerPopup);
+		popup.transform.SetParent(canvas.transform, false);
+		popup.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(sinner.position);
+		popup.GetComponent<CoinPopup>().Setup(value);
 	}
 }

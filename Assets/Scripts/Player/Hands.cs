@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hands : Weapon
 {
     Enemy m_catchedEnemy;
-    [SerializeField] private GameObject m_enemyHolder;
+    [SerializeField] public GameObject m_enemyHolder;
     [SerializeField] private TamingArea m_tamingArea;
 
     [SerializeField] private float m_baseTamingTime;
@@ -75,10 +75,14 @@ public class Hands : Weapon
     public override void StopAttack()
     {
         m_animator.SetBool("Attack", false);
-        m_collider.enabled = false;
     }
 
-    public SinType GetChatchedEnemyType()
+	void DisableCollision()
+	{
+		m_collider.enabled = false;
+	}
+
+	public SinType GetChatchedEnemyType()
     {
         if (m_catchedEnemy == null) return SinType.None;
         else return m_catchedEnemy.GetSinType();

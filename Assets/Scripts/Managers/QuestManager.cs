@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+	public static QuestManager instance;
 	[SerializeField] public Quest[] quests;
 	[SerializeField] public int m_questNumber = 0;
 	[SerializeField] public bool extraQuestIsAdded = false;
@@ -11,6 +12,11 @@ public class QuestManager : MonoBehaviour
 	[SerializeField] public Fork fork;
 	[SerializeField] public WeaponSelection m_weaponSelection;
 
+
+	private void Awake()
+	{
+		instance = this;
+	}
 
 	public void ChangeQuestNuber(int i)
 	{
@@ -34,7 +40,7 @@ public class QuestManager : MonoBehaviour
 	{
 		if (quests[m_questNumber].inProgress)
 		{
-			if (IsRequestCompleted())
+			if (IsRequestCompleted(m_questNumber))
 			{
 				if (m_questNumber == quests.Length - 1)
 				{
@@ -70,9 +76,10 @@ public class QuestManager : MonoBehaviour
 		Menu.instance.UpdateMenuValues();
 	}
 
-	public bool IsRequestCompleted()
+	public bool IsRequestCompleted(int number)
 	{
-		if (m_questNumber == quests.Length - 1)
+		if (number >= quests.Length || number < 0) return false;
+		if (number == quests.Length - 1)
 		{
 			int allSinners = Inventory.instance.GetSinnersNumber(SinType.Anger);
 			allSinners += Inventory.instance.GetSinnersNumber(SinType.Lust);
@@ -81,14 +88,14 @@ public class QuestManager : MonoBehaviour
 			allSinners += Inventory.instance.GetSinnersNumber(SinType.Pride);
 			allSinners += Inventory.instance.GetSinnersNumber(SinType.Envy);
 			allSinners += Inventory.instance.GetSinnersNumber(SinType.Greed);
-			if (allSinners < quests[m_questNumber].requestedQuantity[0]) return false;
+			if (allSinners < quests[number].requestedQuantity[0]) return false;
 		}
 		else
 		{
-			for (int i = 0; i < quests[m_questNumber].requestedType.Length; i++)
+			for (int i = 0; i < quests[number].requestedType.Length; i++)
 			{
-				SinType requestedType = quests[m_questNumber].requestedType[i];
-				int requestedQuantity = quests[m_questNumber].requestedQuantity[i];
+				SinType requestedType = quests[number].requestedType[i];
+				int requestedQuantity = quests[number].requestedQuantity[i];
 
 				if (Inventory.instance.GetSinnersNumber(requestedType) < requestedQuantity) return false;
 			}
